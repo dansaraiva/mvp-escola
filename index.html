@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoMerenda - Combate ao Desperdício Escolar</title>
+    <style>
+        /* Estilos CSS Embutidos */
+        :root {
+            --primary-color: #2E7D32; /* Verde sustentabilidade */
+            --secondary-color: #F9A825; /* Amarelo alerta/educação */
+            --text-color: #333333;
+            --bg-light: #F5F7F6;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .btn-header:hover {
+            background-color: #1b5e20;
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(46, 125, 50, 0.8)), url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80') center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .btn-main {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .btn-main:hover {
+            background-color: #F57F17;
+        }
+
+        /* Seção Como Funciona */
+        .features {
+            padding: 80px 5%;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            width: 300px;
+            text-align: center;
+        }
+
+        .card .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* Calculadora Interativa */
+        .calculator {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .calculator h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .calc-box {
+            background-color: var(--bg-light);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .btn-calc {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-calc:hover {
+            background-color: #1b5e20;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #E8F5E9;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .result h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1b5e20;
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none; /* Em um projeto real, adicionar menu sanduíche */
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo">
+            🌱 EcoMerenda
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#como-funciona">Como Funciona</a></li>
+                <li><a href="#calculadora">Calcule o Impacto</a></li>
+                <li><a href="#" class="btn-header">Falar com Consultor</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Seção Principal -->
+    <section class="hero">
+        <h1>Inteligência contra o desperdício na merenda escolar</h1>
+        <p>Transforme o refeitório da sua escola. Uma plataforma simples para prever o consumo, ajustar cardápios e garantir que a comida vá para o prato, não para o lixo.</p>
+        <a href="#como-funciona" class="btn-main">Conheça a Solução</a>
+    </section>
+
+    <!-- Como Funciona -->
+    <section id="como-funciona" class="features">
+        <h2>Como o EcoMerenda transforma a sua escola</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="icon">📊</div>
+                <h3>Previsão de Demanda</h3>
+                <p>Nosso algoritmo cruza dados de frequência escolar e preferências dos alunos para calcular a quantidade exata de comida a ser preparada no dia.</p>
+            </div>
+            <div class="card">
+                <div class="icon">⚖️</div>
+                <h3>Monitoramento de Sobras</h3>
+                <p>Registro diário do peso das sobras limpas e dos restos nos pratos, gerando relatórios automáticos para os gestores escolares.</p>
+            </div>
+            <div class="card">
+                <div class="icon">👩‍🏫</div>
+                <h3>Educação Alimentar</h3>
+                <p>Materiais didáticos gamificados para envolver os alunos, ensinando a importância de colocar no prato apenas o que vão comer.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculadora com JavaScript -->
+    <section id="calculadora" class="calculator">
+        <h2>Descubra o impacto na sua escola</h2>
+        <p style="margin-bottom: 30px;">Veja quanto de alimento (e dinheiro público) você pode salvar por mês.</p>
+        
+        <div class="calc-box">
+            <div class="input-group">
+                <label for="alunos">Número médio de alunos que almoçam/lancham por dia:</label>
+                <input type="number" id="alunos" placeholder="Ex: 500" min="1">
+            </div>
+            <button class="btn-calc" onclick="calcularImpacto()">Calcular Economia</button>
+
+            <div id="resultado" class="result">
+                <h3>Impacto Mensal Estimado</h3>
+                <p>Nossa solução pode ajudar sua escola a evitar o desperdício de:</p>
+                <p class="highlight" id="kg-salvos">0 kg</p>
+                <p>de alimentos perfeitamente bons todo mês.</p>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: #555;">*Cálculo baseado em uma média de redução de 60% sobre o desperdício padrão de 45g/aluno ao dia, considerando 20 dias letivos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 EcoMerenda - Soluções Sustentáveis. Todos os direitos reservados.</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">Juntos por um futuro sem fome e sem desperdício.</p>
+    </footer>
+
+    <!-- Script JavaScript -->
+    <script>
+        function calcularImpacto() {
+            // Pegar o valor do input
+            const numAlunos = document.getElementById('alunos').value;
+            const divResultado = document.getElementById('resultado');
+            const spanKg = document.getElementById('kg-salvos');
+
+            // Validação simples
+            if (numAlunos === '' || numAlunos <= 0) {
+                alert("Por favor, insira um número válido de alunos.");
+                return;
+            }
+
+            // Variáveis da estatística (exemplo fictício porém realista)
+            // Média de desperdício diário por aluno: 45 gramas (0.045 kg)
+            // Dias letivos no mês: 20
+            // Eficiência da nossa solução: Redução de 60%
+            const desperdicioDiarioTotal = numAlunos * 0.045; 
+            const desperdicioMensal = desperdicioDiarioTotal * 20;
+            const kgSalvos = desperdicioMensal * 0.60;
+
+            // Formatar o resultado para 1 casa decimal
+            spanKg.innerText = kgSalvos.toFixed(1).replace('.', ',') + " kg";
+
+            // Mostrar a div de resultado com uma animação simples
+            divResultado.style.display = 'block';
+            divResultado.animate([
+                { opacity: 0, transform: 'translateY(-10px)' },
+                { opacity: 1, transform: 'translateY(0)' }
+            ], {
+                duration: 500,
+                fill: 'forwards'
+            });
+        }
+    </script>
+</body>
+</html>
